@@ -1,16 +1,17 @@
 {
-  "name": "AkitaBox-Challenges",
+  "name": "AkitaBox-Challenge",
   "version": "1.0.0",
-  "description": "",
-  "main": "Evolution.js",
+  "description": "Challenge: Write some code that will evaluate a poker hand and determine its rank.",
+  "main": "PokerHand.js",
   "scripts": {
     "test": "mocha"
   },
   "keywords": [],
-  "author": "",
+  "author": "AReich",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^6.1.4"
-  }
+  },
+  "dependencies": {}
 }
