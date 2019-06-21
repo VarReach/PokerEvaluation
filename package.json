@@ -1,5 +1,5 @@
 {
-  "name": "AkitaBox-Challenge",
+  "name": "poker-challenge",
   "version": "1.0.0",
   "description": "Challenge: Write some code that will evaluate a poker hand and determine its rank.",
   "main": "PokerHand.js",
