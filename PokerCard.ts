@@ -1,9 +1,13 @@
-function convertCard(card) {
-  let value;
-  let suit;
+interface Card {
+  suit: string, rank: number
+};
+
+function convertCard(card: string): Card {
+  let value: string;
+  let suit: string;
 
   if (card.length > 2) {
-    value = card.substr(0,2);
+    value = card.substr(0, 2);
     suit = card[2];
   } else {
     value = card[0];
@@ -14,11 +18,37 @@ function convertCard(card) {
 
   return {
     rank: getCardRank(value),
-    suit,
+    suit
   };
 }
 
-function convertCardRankToName(rank, plural = true) {
+function validateCard(value: string, suit: string): void {
+  const possibleValues = ['1','2','3','4','5','6','7','8','9','10','J','Q','K','A'];
+  const possibleSuits = ['s', 'h', 'd', 'c'];
+
+  if (!possibleValues.includes(value) || !possibleSuits.includes(suit)) {
+    throw new Error('Invalid card');
+  }
+}
+
+function getCardRank(value: string): number {
+  let result;
+
+  const royalConversionTable = {
+    'J': 11,
+    'Q': 12,
+    'K': 13,
+    'A': 14
+  };
+
+  (Object.keys(royalConversionTable).includes(value))
+    ? result = royalConversionTable[value]
+    : result = parseInt(value);
+
+  return result;
+}
+
+function convertCardRankToName(rank: string, plural = true) {
   const dict = {
     '2': 'Two',
     '3': 'Three',
@@ -43,33 +73,8 @@ function convertCardRankToName(rank, plural = true) {
   return dict[rank];
 }
 
-function validateCard(value, suit) {
-  const possibleValues = ['1','2','3','4','5','6','7','8','9','10','J','Q','K','A'];
-  const possibleSuits = ['s', 'h', 'd', 'c'];
-
-  if (!possibleValues.includes(value) || !possibleSuits.includes(suit)) {
-    throw new Error('Invalid card');
-  }
-}
-
-function getCardRank(value) {
-  let result;
-
-  const royalConversionTable = {
-    'J': 11,
-    'Q': 12,
-    'K': 13,
-    'A': 14
-  };
-
-  (Object.keys(royalConversionTable).includes(value))
-    ? result = royalConversionTable[value]
-    : result = parseInt(value);
-
-  return result;
-}
-
-module.exports = {
+export {
+  Card,
   convertCard,
   convertCardRankToName
 };
