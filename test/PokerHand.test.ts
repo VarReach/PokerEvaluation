@@ -1,15 +1,8 @@
-const { expect } = require('chai');
 
-const evaluatePokerHand = require('../PokerHand');
+import { expect } from 'chai';
+import evaluatePokerHand from '../Poker';
 
 describe('Validate Hand', () => {
-  it('Should throw if not given string', () => {
-    expect(() => evaluatePokerHand(['5s', '6s'])).to.throw();
-    expect(() => evaluatePokerHand(6)).to.throw();
-    expect(() => evaluatePokerHand(null)).to.throw();
-    expect(() => evaluatePokerHand()).to.throw();
-  });
-
   it('Should throw if invalid hand size', () => {
     const smallHand = '9s 9s';
     const largeHand = '9s 9s 9s 9s 9s 9s 9s 9s';
@@ -93,5 +86,3 @@ describe('Evaluate Hand', () => {
     expect(result).to.equal('High Card (Eight)');
   });
 });
-
-

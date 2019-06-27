@@ -42,6 +42,7 @@ function evaluatePokerHand(handString) {
     var cardName = PokerCard_1.convertCardRankToName(hand[4].rank, false);
     return "High Card (" + cardName + ")";
 }
+exports["default"] = evaluatePokerHand;
 function validatePokerHand(hand) {
     if (hand.length !== 5) {
         throw new Error('Hand must consist of 5 cards');
